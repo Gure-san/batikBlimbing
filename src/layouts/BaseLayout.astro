@@ -1,25 +1,58 @@
 ---
+// Components
+import { Navs } from '@/components';
+
+// Icons
+import { CubeTransparentIcon } from '@heroicons/react/24/solid';
+
 interface Props {
-  title: string,
+  title: string;
 }
-
-const {title} = Astro.props;
-
-
+const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name='generator' content={Astro.generator} />
-  <title>{title}</title>
-</head>
-<body>
-  <slot>
-  </slot>
-  <script>import "preline/dist/preline.js";</script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div
+      class="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white py-4 text-sm"
+    >
+      <nav
+        class="max-w-[85rem] w-full mx-auto px-6 flex items-center justify-between"
+        aria-label="Global"
+      >
+        {/* Brand Area */}
+        <div class="w-max flex items-center gap-x-2 justify-between">
+          <CubeTransparentIcon className="w-6 h-6" />
+          <a class="text-xl font-semibold" href="#"> Brand</a>
+        </div>
+
+        {/* Navitems */}
+        <Navs client:only>
+          <a class="font-medium text-blue-500" href="#" aria-current="page">
+            Beranda
+          </a>
+  
+          <a class="font-medium text-gray-500" href="#">
+            Profil
+          </a>
+  
+          <a class="font-medium text-gray-500" href="#">
+            Produk
+          </a>
+        </Navs>
+      </nav>
+    </div>
+
+    <!-- Children -->
+    <slot />
+  </body>
 </html>
