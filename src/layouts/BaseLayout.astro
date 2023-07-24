@@ -5,7 +5,7 @@ interface Props {
 
 const {title} = Astro.props;
 
-import { Header, Footer } from '../components/Astro/index.astro';
+
 ---
 
 <!DOCTYPE html>
@@ -18,10 +18,8 @@ import { Header, Footer } from '../components/Astro/index.astro';
   <title>{title}</title>
 </head>
 <body>
-  <Header/>
   <slot>
   </slot>
-  <Footer/>
   <script>import "preline/dist/preline.js";</script>
 </body>
 </html>
