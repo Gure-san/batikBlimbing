@@ -166,7 +166,7 @@ function Navs({ routes, currentActiveRoute }: NavsProps) {
           onClick={() => setOverlay(!overlay)}
           className={clsx(
             'sm:hidden block',
-            'cursor-pointer tham tham-e-spin tham-w-6',
+            'cursor-pointer tham tham-e-squeeze tham-w-6',
             overlay && 'tham-active'
           )}
         >
