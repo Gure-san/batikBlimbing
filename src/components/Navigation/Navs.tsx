@@ -16,44 +16,66 @@ import { clsx } from 'clsx';
 // Data
 import { BREAK_POINT } from '@/data';
 
+const navsVariant: Variants = {
+  init: {
+    opacity: 0,
+    scale: 0,
+  },
+
+  open: {
+    display: 'flex',
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.3,
+    },
+  },
+
+  close: {
+    scale: 0,
+    opacity: 0,
+    transition: { 
+      duration: 0.3
+    },
+  },
+};
+
+const navItemVariant: Variants = {
+  init: {
+    opacity: 0,
+    y: 30,
+  },
+
+  show: (custom: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.3,
+      delay: custom * 0.1
+    }
+  }),
+};
+
 function Navs({ routes, currentActiveRoute }: NavsProps) {
   const [overlay, setOverlay] = useState(false);
   const { width } = useWindowSize();
 
-  const navsVariant: Variants = {
-    init: {
-      opacity: 0,
-      scale: 0,
-    },
-
-    open: {
-      display: 'flex',
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.3,
-      },
-    },
-
-    close: {
-      scale: 0,
-      opacity: 0,
-      transition: { duration: 0.3 },
-    },
-  };
-
   const NavItems = () => {
     return (
       <Fragment>
-        {routes.map(({ txt, href }) => (
-          <a
-            className={`font-medium ${
-              currentActiveRoute === href ? 'text-blue-500' : 'text-gray-500'
-            }`}
-            href={href}
-          >
-            {txt}
-          </a>
+        {routes.map(({ txt, href }, index) => (
+          <motion.a
+          custom={index}
+          initial={'init'}
+          animate={'show'}
+          variants={navItemVariant}
+          className={`font-medium ${
+            currentActiveRoute === href ? 'text-blue-500' : 'text-gray-500'
+          }`}
+          href={href}
+        >
+          {txt}
+        </motion.a>
         ))}
       </Fragment>
     );
@@ -110,7 +132,10 @@ function Navs({ routes, currentActiveRoute }: NavsProps) {
           )}
         >
           <div className="tham-box">
-            <div className="tham-inner" />
+            <div className={clsx(
+              "tham-inner",
+              overlay && "bg-white"
+            )} />
           </div>
         </div>
       </div>
