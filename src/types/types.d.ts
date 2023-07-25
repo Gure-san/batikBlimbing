@@ -10,6 +10,7 @@ type PropsWithChildren<T = any> = {
 }
 
 type RouteProp = {
+  id: string,
   txt: string,
   href: string
 }

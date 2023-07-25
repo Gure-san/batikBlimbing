@@ -5,6 +5,9 @@ import { Navs } from '@/components';
 // Icons
 import { CubeTransparentIcon } from '@heroicons/react/24/solid';
 
+// Utils
+import {generateId} from '@/utils';
+
 interface Props {
   title: string;
   currentRoute: string
@@ -13,16 +16,19 @@ const { title, currentRoute } = Astro.props;
 
 const routes: Routes = [
   {
+    id: generateId(),
     txt: 'Beranda',
     href: '/',
   },
 
   {
+    id: generateId(),
     txt: 'Profil',
     href: '/profil',
   },
 
   {
+    id: generateId(),
     txt: 'Produk',
     href: '/produk',
   },
@@ -57,7 +63,7 @@ const routes: Routes = [
         <Navs 
         currentActiveRoute={currentRoute}
         routes={routes}
-        client:only/>
+        client:only="react"/>
       </nav>
     </div>
 

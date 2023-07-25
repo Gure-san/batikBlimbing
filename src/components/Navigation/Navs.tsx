@@ -44,7 +44,7 @@ const navsVariant: Variants = {
     opacity: 0,
     transition: {
       duration: 0.3,
-      delay: 0.3
+      delay: 0.3,
     },
   },
 };
@@ -68,9 +68,9 @@ const navItemVariant: Variants = {
     opacity: 0,
     transition: {
       duration: 0.3,
-      delay: custom * 0.1
-    }
-  })
+      delay: custom * 0.1,
+    },
+  }),
 };
 
 function Navs({ routes, currentActiveRoute }: NavsProps) {
@@ -80,11 +80,12 @@ function Navs({ routes, currentActiveRoute }: NavsProps) {
   const NavItems = () => {
     return (
       <Fragment>
-        {routes.map(({ txt, href }, index) => {
+        {routes.map(({ id, txt, href }, index) => {
           // Desktop Mode
           if (width > BREAK_POINT) {
             return (
               <a
+                key={id}
                 className={`font-medium ${
                   currentActiveRoute === href
                     ? 'text-blue-500'
@@ -100,6 +101,7 @@ function Navs({ routes, currentActiveRoute }: NavsProps) {
           // Mobile Mode
           return (
             <motion.a
+              key={id}
               custom={index}
               initial={'init'}
               animate={'show'}
@@ -169,10 +171,12 @@ function Navs({ routes, currentActiveRoute }: NavsProps) {
           )}
         >
           <div className="tham-box">
-            <div className={clsx(
-              "tham-inner transition-colors",
-              overlay ? 'bg-slate-50 delay-300' : 'bg-slate-950 delay-0' 
-            )}></div>
+            <div
+              className={clsx(
+                'tham-inner transition-colors',
+                overlay ? 'bg-slate-50' : 'bg-slate-950'
+              )}
+            ></div>
           </div>
         </div>
       </div>
