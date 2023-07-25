@@ -18,24 +18,33 @@ import { BREAK_POINT } from '@/data';
 
 const navsVariant: Variants = {
   init: {
+    background: '#f8fafc',
     opacity: 0,
-    scale: 0,
+    scale: 0.2,
+    borderRadius: 500,
   },
 
   open: {
+    background: '#020617',
     display: 'flex',
     opacity: 1,
+
     scale: 1,
+    borderRadius: 0,
+
     transition: {
       duration: 0.3,
     },
   },
 
   close: {
+    background: '#f8fafc',
     scale: 0,
+    borderRadius: 300,
     opacity: 0,
-    transition: { 
-      duration: 0.3
+    transition: {
+      duration: 0.3,
+      delay: 0.3
     },
   },
 };
@@ -51,9 +60,17 @@ const navItemVariant: Variants = {
     y: 0,
     transition: {
       duration: 0.3,
+      delay: custom * 0.1,
+    },
+  }),
+
+  hide: (custom: number) => ({
+    opacity: 0,
+    transition: {
+      duration: 0.3,
       delay: custom * 0.1
     }
-  }),
+  })
 };
 
 function Navs({ routes, currentActiveRoute }: NavsProps) {
@@ -63,20 +80,40 @@ function Navs({ routes, currentActiveRoute }: NavsProps) {
   const NavItems = () => {
     return (
       <Fragment>
-        {routes.map(({ txt, href }, index) => (
-          <motion.a
-          custom={index}
-          initial={'init'}
-          animate={'show'}
-          variants={navItemVariant}
-          className={`font-medium ${
-            currentActiveRoute === href ? 'text-blue-500' : 'text-gray-500'
-          }`}
-          href={href}
-        >
-          {txt}
-        </motion.a>
-        ))}
+        {routes.map(({ txt, href }, index) => {
+          // Desktop Mode
+          if (width > BREAK_POINT) {
+            return (
+              <a
+                className={`font-medium ${
+                  currentActiveRoute === href
+                    ? 'text-blue-500'
+                    : 'text-gray-500'
+                }`}
+                href={href}
+              >
+                {txt}
+              </a>
+            );
+          }
+
+          // Mobile Mode
+          return (
+            <motion.a
+              custom={index}
+              initial={'init'}
+              animate={'show'}
+              exit={'hide'}
+              variants={navItemVariant}
+              className={`font-medium ${
+                currentActiveRoute === href ? 'text-blue-500' : 'text-gray-500'
+              }`}
+              href={href}
+            >
+              {txt}
+            </motion.a>
+          );
+        })}
       </Fragment>
     );
   };
@@ -99,7 +136,7 @@ function Navs({ routes, currentActiveRoute }: NavsProps) {
                   className={clsx(
                     'flex gap-5', // default
                     'sm:static sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5 sm:bg-white', // Desktop mode
-                    `flex-col fixed top-0 bottom-0 left-0 right-0 justify-center items-center bg-black bg-opacity-80` // Mobile Mode
+                    `flex-col fixed top-0 bottom-0 left-0 right-0 justify-center items-center` // Mobile Mode
                   )}
                 >
                   <NavItems />
@@ -133,9 +170,9 @@ function Navs({ routes, currentActiveRoute }: NavsProps) {
         >
           <div className="tham-box">
             <div className={clsx(
-              "tham-inner",
-              overlay && "bg-white"
-            )} />
+              "tham-inner transition-colors",
+              overlay ? 'bg-slate-50 delay-300' : 'bg-slate-950 delay-0' 
+            )}></div>
           </div>
         </div>
       </div>
