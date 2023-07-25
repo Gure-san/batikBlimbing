@@ -166,14 +166,14 @@ function Navs({ routes, currentActiveRoute }: NavsProps) {
           onClick={() => setOverlay(!overlay)}
           className={clsx(
             'sm:hidden block',
-            'cursor-pointer tham tham-e-squeeze tham-w-6',
+            'cursor-pointer tham tham-e-spin tham-w-6',
             overlay && 'tham-active'
           )}
         >
           <div className="tham-box">
             <div
               className={clsx(
-                'tham-inner transition-colors',
+                'tham-inner transition-all',
                 overlay ? 'bg-slate-50' : 'bg-slate-950'
               )}
             ></div>
