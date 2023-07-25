@@ -2,7 +2,8 @@
 // Layouts
 import BaseLayout from '@/layouts/BaseLayout.astro';
 
+const currentRoute = Astro.url.pathname;
 ---
 
-<BaseLayout title="Beranda">
+<BaseLayout title="Beranda" currentRoute={currentRoute}>
 </BaseLayout>

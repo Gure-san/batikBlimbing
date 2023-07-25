@@ -7,8 +7,26 @@ import { CubeTransparentIcon } from '@heroicons/react/24/solid';
 
 interface Props {
   title: string;
+  currentRoute: string
 }
-const { title } = Astro.props;
+const { title, currentRoute } = Astro.props;
+
+const routes: Routes = [
+  {
+    txt: 'Beranda',
+    href: '/',
+  },
+
+  {
+    txt: 'Profil',
+    href: '/profil',
+  },
+
+  {
+    txt: 'Produk',
+    href: '/produk',
+  },
+];
 ---
 
 <!DOCTYPE html>
@@ -36,23 +54,14 @@ const { title } = Astro.props;
         </div>
 
         {/* Navitems */}
-        <Navs client:only>
-          <a class="font-medium text-blue-500" href="#" aria-current="page">
-            Beranda
-          </a>
-  
-          <a class="font-medium text-gray-500" href="#">
-            Profil
-          </a>
-  
-          <a class="font-medium text-gray-500" href="#">
-            Produk
-          </a>
-        </Navs>
+        <Navs 
+        currentActiveRoute={currentRoute}
+        routes={routes}
+        client:only/>
       </nav>
     </div>
 
     <!-- Children -->
-    <slot />
+    <slot/>
   </body>
 </html>
