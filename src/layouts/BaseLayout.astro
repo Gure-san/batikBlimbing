@@ -6,11 +6,14 @@ import { Navs } from '@/components';
 import { CubeTransparentIcon } from '@heroicons/react/24/solid';
 
 // Utils
-import {generateId} from '@/utils';
+import { generateId } from '@/utils';
+
+// Styles
+import '@/styles/global.css';
 
 interface Props {
   title: string;
-  currentRoute: string
+  currentRoute: string;
 }
 const { title, currentRoute } = Astro.props;
 
@@ -42,6 +45,27 @@ const routes: Routes = [
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
+    <style is:global>
+      /* Quicksand */
+      @font-face {
+        font-family: Quicksand;
+        src: url('/fonts/Quicksand-Regular.woff2') format('woff2'),
+          url('/fonts/Quicksand-Regular.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      /* Aleo */
+      @font-face {
+        font-family: Aleo;
+        src: url('/fonts/Aleo-Regular.woff2') format('woff2'),
+          url('/fonts/Aleo-Regular.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
     <title>{title}</title>
   </head>
   <body>
@@ -60,14 +84,15 @@ const routes: Routes = [
         </div>
 
         {/* Navitems */}
-        <Navs 
-        currentActiveRoute={currentRoute}
-        routes={routes}
-        client:only="react"/>
+        <Navs
+          currentActiveRoute={currentRoute}
+          routes={routes}
+          client:only="react"
+        />
       </nav>
     </div>
 
     <!-- Children -->
-    <slot/>
+    <slot />
   </body>
 </html>
