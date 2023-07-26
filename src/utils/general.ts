@@ -9,5 +9,5 @@ function generateId(): string {
 }
 
 export {
-  generateId
+  generateId,
 }

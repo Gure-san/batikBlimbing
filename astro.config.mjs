@@ -8,8 +8,9 @@ import image from '@astrojs/image';
 export default defineConfig({
   build: {
     assets: 'assets',
-    assetsPrefix: './'
+    assetsPrefix: '/dist/'
   },
+
   integrations: [
     react(),
     tailwind({

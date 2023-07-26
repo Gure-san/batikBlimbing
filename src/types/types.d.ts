@@ -21,3 +21,5 @@ type NavsProps = {
   routes: Routes,
   currentActiveRoute: string
 }
+
+type Mode = "development" | "production";
