@@ -1,23 +1,6 @@
+@import '@fontsource/aleo/index.css';
+@import '@fontsource/quicksand/index.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Quicksand */
-@font-face {
-  font-family: Quicksand;
-  src: url('../assets/Quicksand-Regular.woff2') format('woff2'),
-    url('../assets/Quicksand-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Aleo */
-@font-face {
-  font-family: Aleo;
-  src: url('../assets/Aleo-Regular.woff2') format('woff2'),
-    url('../assets/Aleo-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}

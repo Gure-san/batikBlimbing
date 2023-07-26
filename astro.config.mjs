@@ -4,11 +4,13 @@ import tailwind from '@astrojs/tailwind';
 
 import image from '@astrojs/image';
 
+const productionSite = 'https://gure-san.github.io/batikBlimbing/';
+
 // https://astro.build/config
 export default defineConfig({
   build: {
     assets: 'assets',
-    assetsPrefix: '/dist/'
+    assetsPrefix: productionSite
   },
 
   integrations: [
