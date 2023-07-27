@@ -17,6 +17,7 @@
     "@fontsource/aleo": "^5.0.6",
     "@fontsource/quicksand": "^5.0.5",
     "@heroicons/react": "^2.0.18",
+    "@radix-ui/react-slot": "^1.0.2",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@types/react": "^18.2.7",
     "@types/react-dom": "^18.2.4",

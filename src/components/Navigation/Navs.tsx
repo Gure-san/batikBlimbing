@@ -10,6 +10,9 @@ import { If, Then, Else } from 'react-if';
 // Hooks
 import { useWindowSize } from 'usehooks-ts';
 
+// Components
+import { buttonVariants } from '@/components/ui/button';
+
 // Utils
 import { clsx } from 'clsx';
 
@@ -157,6 +160,18 @@ function Navs({ routes, currentActiveRoute }: NavsProps) {
               )}
             >
               <NavItems />
+
+              <a 
+              className={
+                buttonVariants({
+                  variant: "custom",
+                  className: "bg-primary"
+                })
+              }
+              target='_blank' 
+              href="">
+                Hubungi Kami
+              </a>
             </div>
           </Else>
         </If>
