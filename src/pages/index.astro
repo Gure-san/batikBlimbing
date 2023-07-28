@@ -11,6 +11,14 @@ import { Button } from '@/components/ui/button';
 // Icons
 import { ChevronRightIcon } from '@heroicons/react/24/solid';
 
+// Assets
+import exampleProduct1 from '@/assets/exampleProduct1.jpg';
+import exampleProduct2 from '@/assets/exampleProduct2.jpg';
+import exampleProduct3 from '@/assets/exampleProduct3.jpg';
+import exampleProduct4 from '@/assets/exampleProduct4.jpg';
+import exampleProduct5 from '@/assets/exampleProduct5.jpg';
+import exampleProduct6 from '@/assets/exampleProduct6.jpg';
+
 import { Debug } from 'astro/components';
 
 const currentRoute = Astro.url.pathname;
@@ -63,7 +71,7 @@ const currentRoute = Astro.url.pathname;
     <div class="flex flex-col justify-center items-center gap-8">
       <h1 class="font-aleo text-2xl">Kenapa Batik Blimbing?</h1>
       
-      <div class="flex sm:flex-row flex-col gap-8">
+      <div class="flex md:flex-row flex-col gap-8">
         <FeatureProductCard 
           iconName="experts"
           title="Kualitas Keterampilan Tingkat Ahli"
@@ -92,9 +100,48 @@ const currentRoute = Astro.url.pathname;
     <div class="flex flex-col justify-center items-center gap-8">
       <h1 class="font-aleo text-2xl">Koleksi Eksklusif Batik Blimbing</h1>
 
-      <div class="flex sm:flex-row flex-col gap-8">
-        koleksi
+      <div class="flex md:flex-row flex-col gap-8 w-full ">
+        <CollectionProductCard
+          foregroundImg={{
+            src: exampleProduct1,
+            alt: 'Produk Pilihan Pertama Detail Pertama'
+          }}
+          backgroundImg={{
+            src: exampleProduct2,
+            alt: 'Produk Pilihan Pertama Detail Kedua'
+          }}
+          productName="Blimbing Indah"
+        >
+        </CollectionProductCard>
+
+        <CollectionProductCard
+          foregroundImg={{
+            src: exampleProduct3,
+            alt: 'Produk Pilihan Pertama Detail Pertama'
+          }}
+          backgroundImg={{
+            src: exampleProduct4,
+            alt: 'Produk Pilihan Pertama Detail Kedua'
+          }}
+          productName="Blimbing Indah"
+        >
+        </CollectionProductCard>
+
+        <CollectionProductCard
+          foregroundImg={{
+            src: exampleProduct5,
+            alt: 'Produk Pilihan Pertama Detail Pertama'
+          }}
+          backgroundImg={{
+            src: exampleProduct6,
+            alt: 'Produk Pilihan Pertama Detail Kedua'
+          }}
+          productName="Blimbing Indah"
+        >
+        </CollectionProductCard>
       </div>
     </div>
   </SectionLayout>
+
+  <!-- <Debug {exampleProduct1}/> -->
 </BaseLayout>
