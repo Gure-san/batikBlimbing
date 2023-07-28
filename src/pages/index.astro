@@ -4,7 +4,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import SectionLayout from '@/layouts/SectionLayout.astro';
 
 // Components
-import FeatureProductCard from '@/components/Card/Card.astro';
+import FeatureProductCard from '@/components/Card/FeatureProduct.astro';
 import { Button } from '@/components/ui/button';
 
 // Icons
@@ -83,6 +83,16 @@ const currentRoute = Astro.url.pathname;
         >
           Batik Blimbing cocok untuk berbagai acara, dari kegiatan sehari-hari hingga peristiwa khusus, menambah pesona dan keanggunan pada setiap momen.
         </FeatureProductCard>
+      </div>
+    </div>
+  </SectionLayout>
+
+  <SectionLayout>
+    <div class="flex flex-col justify-center items-center gap-8">
+      <h1 class="font-aleo text-2xl">Koleksi Eksklusif Batik Blimbing</h1>
+
+      <div class="flex sm:flex-row flex-col gap-8">
+        koleksi
       </div>
     </div>
   </SectionLayout>
