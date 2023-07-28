@@ -6,11 +6,11 @@ import SectionLayout from '@/layouts/SectionLayout.astro';
 // Components
 import { Button } from '@/components/ui/button';
 
+// Icons
+import { ChevronRightIcon } from '@heroicons/react/24/solid';
+
 // lib
 import { Image } from '@astrojs/image/components';
-
-// Assets
-import mainIllustration from '@/imgs/mainIllustration.png';
 
 import { Debug } from 'astro/components';
 
@@ -19,41 +19,44 @@ const currentRoute = Astro.url.pathname;
 
 <BaseLayout title="Beranda" currentRoute={currentRoute}>
   <SectionLayout>
-    <div class="relative grid grid-cols-2 gap-4">
-      <div class="w-full flex flex-col justify-center items-start gap-6">
-        <h2 class="font-aleo font-bold text-5xl">
-          Eksplorasi Kekayaan Motif Batik Blimbing
-        </h2>
-
-        <p class="font-quicksand text-xl">
-          Menciptakan Keunikan Pribadi dengan Menemukan Motif Batik Blimbing
-          yang Cocok untuk Diri Sendiri.
-        </p>
-
-        <Button
-          client:only
-          variant="custom"
-          className="border border-slate-200 bg-primary hover:bg-secondary text-foreground px-6"
+    <div class="w-full flex flex-col justify-center sm:items-center items-start gap-6">
+      <!-- Announcement Banner -->
+      <div class="flex justify-center font-quicksand">
+        <a
+          class="inline-flex items-center gap-x-2 bg-white border border-gray-200 text-xs text-gray-600 p-2 px-3 rounded-full transition hover:border-gray-300 dark:bg-gray-800 dark:border-gray-700 dark:hover:border-gray-600 dark:text-gray-400"
+          href="#"
         >
-          Lihat Profil Kami
-        </Button>
+          Temukan lebih banyak produk!
+          <span class="flex items-center gap-x-1">
+            <span
+              class="border-l border-gray-200 text-blue-600 pl-2 dark:text-blue-500"
+              >Kunjungi Halaman
+            </span
+            >
+            <ChevronRightIcon className='w-4 h-4'/>
+          </span>
+        </a>
       </div>
+      <!-- End Announcement Banner -->
 
-      <div class="relative w-full flex justify-center items-center">
-        <Image
-          class={'w-full h-full'}
-          src={mainIllustration.src}
-          width={mainIllustration.width}
-          height={mainIllustration.height}
-          alt="Ilustrasi Pemilihan Produk Batik Blimbing"
-        />
-      </div>
+      <h2 class="max-w-2xl font-aleo font-bold text-5xl">
+        Eksplorasi Kreativitas dengan 
+        Motif Batik Blimbing
+      </h2>
+
+      <p class="font-quicksand text-xl max-w-3xl">
+        Temukan inspirasi tak terbatas dengan Batik Blimbing. Biarkan
+        kreativitas Anda berkembang dalam memilih motif yang paling mewakili
+        diri Anda. Jadikan Batik Blimbing sebagai bagian dari gaya unik Anda.
+      </p>
+
+      <Button
+        client:only
+        variant="custom"
+        className="border border-slate-200 bg-primary text-foreground px-6 shadow-md shadow-transparent hover:shadow-primary duration-300 transition-shadow"
+      >
+        Lihat Profil Kami
+      </Button>
     </div>
-
-    <!-- <Debug {mainIllustration.width}/> -->
-  </SectionLayout>
-
-  <SectionLayout>
-    
   </SectionLayout>
 </BaseLayout>
