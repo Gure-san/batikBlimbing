@@ -9,9 +9,6 @@ import { Button } from '@/components/ui/button';
 // Icons
 import { ChevronRightIcon } from '@heroicons/react/24/solid';
 
-// lib
-import { Image } from '@astrojs/image/components';
-
 import { Debug } from 'astro/components';
 
 const currentRoute = Astro.url.pathname;
@@ -53,7 +50,7 @@ const currentRoute = Astro.url.pathname;
       <Button
         client:only
         variant="custom"
-        className="border border-slate-200 bg-primary text-foreground px-6 shadow-md shadow-transparent hover:shadow-primary duration-300 transition-shadow"
+        className="font-quicksand relative z-0 bg-primary text-foreground px-6 drop-shadow-sm hover:drop-shadow-2xl duration-300 transition-all outline-none border-none"
       >
         Lihat Profil Kami
       </Button>
