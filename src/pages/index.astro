@@ -4,6 +4,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import SectionLayout from '@/layouts/SectionLayout.astro';
 
 // Components
+import FeatureProductCard from '@/components/Card/Card.astro';
 import { Button } from '@/components/ui/button';
 
 // Icons
@@ -54,6 +55,35 @@ const currentRoute = Astro.url.pathname;
       >
         Lihat Profil Kami
       </Button>
+    </div>
+  </SectionLayout>
+
+  <SectionLayout>
+    <div class="flex flex-col justify-center items-center gap-8">
+      <h1 class="font-aleo text-2xl">Kenapa Batik Blimbing?</h1>
+      
+      <div class="flex sm:flex-row flex-col gap-8">
+        <FeatureProductCard 
+          iconName="experts"
+          title="Kualitas Keterampilan Tingkat Ahli"
+        >
+          Batik Blimbing dihasilkan oleh para pengrajin berpengalaman yang telah mengasah keterampilan tingkat ahli selama bertahun-tahun.
+        </FeatureProductCard>
+
+        <FeatureProductCard 
+          iconName="quality"
+          title="Kain Berkualitas dan Ramah Lingkungan"
+        >
+          Batik Blimbing menggunakan kain berkualitas tinggi dan pewarna ramah lingkungan, mendukung upaya keberlanjutan dan bertanggung jawab.
+        </FeatureProductCard>
+
+        <FeatureProductCard 
+          iconName="events"
+          title="Cocok untuk Berbagai Kesempatan"
+        >
+          Batik Blimbing cocok untuk berbagai acara, dari kegiatan sehari-hari hingga peristiwa khusus, menambah pesona dan keanggunan pada setiap momen.
+        </FeatureProductCard>
+      </div>
     </div>
   </SectionLayout>
 </BaseLayout>

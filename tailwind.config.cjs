@@ -8,7 +8,7 @@ module.exports = {
     container: {
       center: true,
 
-      padding: "2rem",
+      padding: '2rem',
       screens: {
         '2xl': '1400px',
       },
@@ -16,12 +16,21 @@ module.exports = {
 
     extend: {
       colors: {
-        base: '#fdfcfc', // background
+        base: {
+          main: '#fdfcfc',
+          shade: '#F5F4F4',
+        }, // background
         foreground: '#030202', // text
 
         primary: '#eeff00',
-        secondary: '#7fff08',
-        accent: '#d81b18',
+        secondary: {
+          main: '#7fff08',
+          shade: '#E4FDCB',
+        },
+        accent: {
+          main: '#d81b18',
+          shade: '#E37270',
+        },
       },
 
       keyframes: {

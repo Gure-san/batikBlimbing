@@ -90,9 +90,9 @@ function Navs({ routes, currentActiveRoute }: NavsProps) {
               <a
                 key={id}
                 className={clsx(
-                  "text-foreground font-medium",
-                  "border-foreground",
-                  currentActiveRoute === href && "border-b-2"
+                  'text-foreground font-medium',
+                  'border-foreground',
+                  currentActiveRoute === href && 'border-b-2'
                 )}
                 href={href}
               >
@@ -140,7 +140,7 @@ function Navs({ routes, currentActiveRoute }: NavsProps) {
                   variants={navsVariant}
                   className={clsx(
                     'flex gap-5', // default
-                    'sm:static sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5 sm:bg-base', // Desktop mode
+                    'sm:static sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5 sm:bg-base-main', // Desktop mode
                     `flex-col fixed top-0 bottom-0 left-0 right-0 justify-center items-center` // Mobile Mode
                   )}
                 >
@@ -155,7 +155,7 @@ function Navs({ routes, currentActiveRoute }: NavsProps) {
             <div
               className={clsx(
                 'flex gap-5', // default
-                'sm:static sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5 sm:bg-base', // Desktop mode
+                'sm:static sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5 sm:bg-base-main', // Desktop mode
                 `flex-col fixed top-0 bottom-0 left-0 right-0 justify-center items-center bg-black bg-opacity-80` // Mobile Mode
               )}
             >

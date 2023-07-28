@@ -1,0 +1,26 @@
+---
+// lib
+import { Icon } from 'astro-icon';
+
+interface Props {
+  iconName: string,
+  title: string,
+}
+
+const { iconName, title = 'title card' } = Astro.props;
+---
+<div class="font-quicksand w-full flex flex-col gap-2 bg-base-shade p-12 rounded-lg">
+  {
+    !iconName ? 
+    <span>icon area</span> : 
+    <Icon name={iconName} class="w-full"/>
+  }
+
+  <h3 class="mt-4 text-lg font-bold text-gray-900 sm:text-xl">
+    {title}
+  </h3>
+
+  <p class="mt-2 max-w-sm text-gray-700">
+    <slot>isi content card</slot>
+  </p>
+</div>
