@@ -10,7 +10,7 @@ const productionSite = 'https://gure-san.github.io/batikBlimbing/';
 export default defineConfig({
   build: {
     assets: 'assets',
-    assetsPrefix: productionSite
+    assetsPrefix: productionSite,
   },
 
   integrations: [
@@ -18,6 +18,8 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
-    image(),
+    image({
+      serviceEntryPoint: '@astrojs/image/sharp',
+    }),
   ],
 });

@@ -89,11 +89,11 @@ function Navs({ routes, currentActiveRoute }: NavsProps) {
             return (
               <a
                 key={id}
-                className={`font-medium ${
-                  currentActiveRoute === href
-                    ? 'text-blue-500'
-                    : 'text-gray-500'
-                }`}
+                className={clsx(
+                  "text-foreground font-medium",
+                  "border-foreground",
+                  currentActiveRoute === href && "border-b-2"
+                )}
                 href={href}
               >
                 {txt}
@@ -110,8 +110,8 @@ function Navs({ routes, currentActiveRoute }: NavsProps) {
               animate={'show'}
               exit={'hide'}
               variants={navItemVariant}
-              className={`font-medium ${
-                currentActiveRoute === href ? 'text-blue-500' : 'text-gray-500'
+              className={`text-foreground border-slate-950 ${
+                currentActiveRoute === href ? 'border-b-2' : 'text-gray-500'
               }`}
               href={href}
             >
@@ -161,15 +161,14 @@ function Navs({ routes, currentActiveRoute }: NavsProps) {
             >
               <NavItems />
 
-              <a 
-              className={
-                buttonVariants({
-                  variant: "custom",
-                  className: "bg-primary"
-                })
-              }
-              target='_blank' 
-              href="">
+              <a
+                className={buttonVariants({
+                  variant: 'custom',
+                  className: 'bg-primary',
+                })}
+                target="_blank"
+                href=""
+              >
                 Hubungi Kami
               </a>
             </div>

@@ -1,12 +1,59 @@
 ---
 // Layouts
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionLayout from '@/layouts/SectionLayout.astro';
+
+// Components
+import { Button } from '@/components/ui/button';
+
+// lib
+import { Image } from '@astrojs/image/components';
+
+// Assets
+import mainIllustration from '@/imgs/mainIllustration.png';
+
+import { Debug } from 'astro/components';
 
 const currentRoute = Astro.url.pathname;
 ---
 
 <BaseLayout title="Beranda" currentRoute={currentRoute}>
-  <p class="font-quicksand">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur aperiam accusamus distinctio officia voluptatibus? Dicta distinctio esse nesciunt accusantium quod atque ut tempora praesentium, voluptatum nulla? Quidem est necessitatibus repellat.
-  </p>
+  <SectionLayout>
+    <div class="relative grid grid-cols-2 gap-4">
+      <div class="w-full flex flex-col justify-center items-start gap-6">
+        <h2 class="font-aleo font-bold text-5xl">
+          Eksplorasi Kekayaan Motif Batik Blimbing
+        </h2>
+
+        <p class="font-quicksand text-xl">
+          Menciptakan Keunikan Pribadi dengan Menemukan Motif Batik Blimbing
+          yang Cocok untuk Diri Sendiri.
+        </p>
+
+        <Button
+          client:only
+          variant="custom"
+          className="border border-slate-200 bg-primary hover:bg-secondary text-foreground px-6"
+        >
+          Lihat Profil Kami
+        </Button>
+      </div>
+
+      <div class="relative w-full flex justify-center items-center">
+        <Image
+          class={'w-full h-full'}
+          src={mainIllustration.src}
+          width={mainIllustration.width}
+          height={mainIllustration.height}
+          alt="Ilustrasi Pemilihan Produk Batik Blimbing"
+        />
+      </div>
+    </div>
+
+    <!-- <Debug {mainIllustration.width}/> -->
+  </SectionLayout>
+
+  <SectionLayout>
+    
+  </SectionLayout>
 </BaseLayout>

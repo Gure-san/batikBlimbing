@@ -23,3 +23,10 @@ type NavsProps = {
 }
 
 type Mode = "development" | "production";
+
+type Assests = {
+  src: string,
+  width: number,
+  height: number,
+  type: string
+}
