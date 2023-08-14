@@ -4,9 +4,10 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import SectionLayout from '@/layouts/SectionLayout.astro';
 
 // Components
-import FeatureProductCard from '@/components/Card/FeatureProduct.astro';
-import CollectionProductCard from '@/components/Card/CollectionProduct.astro';
 import { Button } from '@/components/ui/button';
+
+// Lib
+import { Image } from '@astrojs/image/components';
 
 // Icons
 import { ChevronRightIcon } from '@heroicons/react/24/solid';
@@ -18,6 +19,7 @@ import exampleProduct3 from '@/assets/exampleProduct3.jpg';
 import exampleProduct4 from '@/assets/exampleProduct4.jpg';
 import exampleProduct5 from '@/assets/exampleProduct5.jpg';
 import exampleProduct6 from '@/assets/exampleProduct6.jpg';
+import profile from '@/assets/profile.jpg';
 
 import { Debug } from 'astro/components';
 
@@ -26,7 +28,9 @@ const currentRoute = Astro.url.pathname;
 
 <BaseLayout title="Beranda" currentRoute={currentRoute}>
   <SectionLayout>
-    <div class="w-full flex flex-col justify-center sm:items-center items-start gap-6">
+    <div
+      class="w-full flex flex-col justify-center sm:items-center items-start gap-6"
+    >
       <!-- Announcement Banner -->
       <div class="flex justify-center font-quicksand">
         <a
@@ -38,17 +42,15 @@ const currentRoute = Astro.url.pathname;
             <span
               class="border-l border-gray-200 text-blue-600 pl-2 dark:text-blue-500"
               >Kunjungi Halaman
-            </span
-            >
-            <ChevronRightIcon className='w-4 h-4'/>
+            </span>
+            <ChevronRightIcon className="w-4 h-4" />
           </span>
         </a>
       </div>
       <!-- End Announcement Banner -->
 
       <h2 class="max-w-2xl font-aleo font-bold text-5xl">
-        Eksplorasi Kreativitas dengan 
-        Motif Batik Blimbing
+        Eksplorasi Kreativitas dengan Motif Batik Blimbing
       </h2>
 
       <p class="font-quicksand text-xl max-w-3xl">
@@ -66,82 +68,4 @@ const currentRoute = Astro.url.pathname;
       </Button>
     </div>
   </SectionLayout>
-
-  <SectionLayout>
-    <div class="flex flex-col justify-center items-center gap-8">
-      <h1 class="font-aleo text-2xl">Kenapa Batik Blimbing?</h1>
-      
-      <div class="flex md:flex-row flex-col gap-8">
-        <FeatureProductCard 
-          iconName="experts"
-          title="Kualitas Keterampilan Tingkat Ahli"
-        >
-          Batik Blimbing dihasilkan oleh para pengrajin berpengalaman yang telah mengasah keterampilan tingkat ahli selama bertahun-tahun.
-        </FeatureProductCard>
-
-        <FeatureProductCard 
-          iconName="quality"
-          title="Kain Berkualitas dan Ramah Lingkungan"
-        >
-          Batik Blimbing menggunakan kain berkualitas tinggi dan pewarna ramah lingkungan, mendukung upaya keberlanjutan dan bertanggung jawab.
-        </FeatureProductCard>
-
-        <FeatureProductCard 
-          iconName="events"
-          title="Cocok untuk Berbagai Kesempatan"
-        >
-          Batik Blimbing cocok untuk berbagai acara, dari kegiatan sehari-hari hingga peristiwa khusus, menambah pesona dan keanggunan pada setiap momen.
-        </FeatureProductCard>
-      </div>
-    </div>
-  </SectionLayout>
-
-  <SectionLayout>
-    <div class="flex flex-col justify-center items-center gap-8">
-      <h1 class="font-aleo text-2xl">Koleksi Eksklusif Batik Blimbing</h1>
-
-      <div class="flex md:flex-row flex-col gap-8 w-full ">
-        <CollectionProductCard
-          foregroundImg={{
-            src: exampleProduct1,
-            alt: 'Produk Pilihan Pertama Detail Pertama'
-          }}
-          backgroundImg={{
-            src: exampleProduct2,
-            alt: 'Produk Pilihan Pertama Detail Kedua'
-          }}
-          productName="Blimbing Indah"
-        >
-        </CollectionProductCard>
-
-        <CollectionProductCard
-          foregroundImg={{
-            src: exampleProduct3,
-            alt: 'Produk Pilihan Pertama Detail Pertama'
-          }}
-          backgroundImg={{
-            src: exampleProduct4,
-            alt: 'Produk Pilihan Pertama Detail Kedua'
-          }}
-          productName="Blimbing Indah"
-        >
-        </CollectionProductCard>
-
-        <CollectionProductCard
-          foregroundImg={{
-            src: exampleProduct5,
-            alt: 'Produk Pilihan Pertama Detail Pertama'
-          }}
-          backgroundImg={{
-            src: exampleProduct6,
-            alt: 'Produk Pilihan Pertama Detail Kedua'
-          }}
-          productName="Blimbing Indah"
-        >
-        </CollectionProductCard>
-      </div>
-    </div>
-  </SectionLayout>
-
-  <!-- <Debug {exampleProduct1}/> -->
 </BaseLayout>

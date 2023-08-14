@@ -16,21 +16,14 @@ module.exports = {
 
     extend: {
       colors: {
-        base: {
-          main: '#fdfcfc',
-          shade: '#F5F4F4',
-        }, // background
-        foreground: '#030202', // text
+        neutral: {
+          background: '#ffffff',
+          foreground: '#030401',
+        },
 
-        primary: '#eeff00',
-        secondary: {
-          main: '#7fff08',
-          shade: '#E4FDCB',
-        },
-        accent: {
-          main: '#d81b18',
-          shade: '#E37270',
-        },
+        primary: '#fcf644 ',
+        secondary: '#353621',
+        accent: '#e6a34d'
       },
 
       keyframes: {
