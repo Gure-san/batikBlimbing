@@ -1,5 +1,5 @@
 // React
-import { useState, useEffect, Fragment } from 'react';
+import { useState, useEffect } from 'react';
 
 // Framer Motion
 import { AnimatePresence, Variants, motion } from 'framer-motion';
@@ -131,7 +131,7 @@ function Navs({ routes, currentActiveRoute }: NavsProps) {
               className={clsx(
                 'flex gap-5 bg-neutral-bg', // default
                 'sm:static sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5', // Desktop mode
-                `flex-col fixed top-0 bottom-0 left-0 right-0 justify-center items-center` // Mobile Mode
+                `flex-col fixed top-0 bottom-0 left-0 right-0 justify-center items-center z-40` // Mobile Mode
               )}
             >
               <NavItems />
@@ -144,8 +144,8 @@ function Navs({ routes, currentActiveRoute }: NavsProps) {
           onClick={() => setOverlay(!overlay)}
           className={clsx(
             'sm:hidden block',
-            'cursor-pointer tham tham-e-squeeze tham-w-6',
-            overlay && 'tham-active'
+            'cursor-pointer tham tham-e-squeeze tham-w-6 relative',
+            overlay && 'tham-active z-50'
           )}
         >
           <div className="tham-box">
