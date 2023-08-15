@@ -13,6 +13,9 @@ import { Image } from '@astrojs/image/components';
 import { ChevronRightIcon } from '@heroicons/react/24/solid';
 
 // Assets
+import ilus1 from '@/assets/ilus1.png';
+import ilus2 from '@/assets/ilus2.png';
+import ilus3 from '@/assets/ilus3.png';
 import exampleProduct1 from '@/assets/exampleProduct1.jpg';
 import exampleProduct2 from '@/assets/exampleProduct2.jpg';
 import exampleProduct3 from '@/assets/exampleProduct3.jpg';
@@ -28,44 +31,42 @@ const currentRoute = Astro.url.pathname;
 
 <BaseLayout title="Beranda" currentRoute={currentRoute}>
   <SectionLayout>
-    <div
-      class="w-full flex flex-col justify-center sm:items-center items-start gap-6"
-    >
-      <!-- Announcement Banner -->
-      <div class="flex justify-center font-quicksand">
-        <a
-          class="inline-flex items-center gap-x-2 bg-white border border-gray-200 text-xs text-gray-600 p-2 px-3 rounded-full transition hover:border-gray-300 dark:bg-gray-800 dark:border-gray-700 dark:hover:border-gray-600 dark:text-gray-400"
-          href="#"
+    <div class="w-full grid grid-cols-2 grid-rows-1">
+      <div class="flex flex-col gap-6">
+        <h2 class="max-w-2xl font-aleo font-bold text-5xl">
+          Eksplorasi Kreativitas dengan Motif Batik Blimbing
+        </h2>
+
+        <p class="font-quicksand text-xl max-w-3xl">
+          Temukan inspirasi tak terbatas dengan Batik Blimbing. Biarkan
+          kreativitas Anda berkembang dalam memilih motif yang paling mewakili
+          diri Anda. Jadikan Batik Blimbing sebagai bagian dari gaya unik Anda.
+        </p>
+
+        <Button
+          client:only
+          variant="custom"
+          className="font-quicksand relative z-0 bg-primary text-foreground px-6 drop-shadow-sm hover:drop-shadow-2xl duration-300 transition-all outline-none border-none"
         >
-          Temukan lebih banyak produk!
-          <span class="flex items-center gap-x-1">
-            <span
-              class="border-l border-gray-200 text-blue-600 pl-2 dark:text-blue-500"
-              >Kunjungi Halaman
-            </span>
-            <ChevronRightIcon className="w-4 h-4" />
-          </span>
-        </a>
+          Lihat Profil Kami
+        </Button>
       </div>
-      <!-- End Announcement Banner -->
 
-      <h2 class="max-w-2xl font-aleo font-bold text-5xl">
-        Eksplorasi Kreativitas dengan Motif Batik Blimbing
-      </h2>
+      <div class="relative justify-self-end">
+        <Image src={ilus2} alt="Produk Batik Blimbing" class={'w-[400px]'} />
 
-      <p class="font-quicksand text-xl max-w-3xl">
-        Temukan inspirasi tak terbatas dengan Batik Blimbing. Biarkan
-        kreativitas Anda berkembang dalam memilih motif yang paling mewakili
-        diri Anda. Jadikan Batik Blimbing sebagai bagian dari gaya unik Anda.
-      </p>
+        <Image
+          src={ilus3}
+          alt="Produk Batik Blimbing"
+          class={'w-[400px] absolute top-0 left-0'}
+        />
 
-      <Button
-        client:only
-        variant="custom"
-        className="font-quicksand relative z-0 bg-primary text-foreground px-6 drop-shadow-sm hover:drop-shadow-2xl duration-300 transition-all outline-none border-none"
-      >
-        Lihat Profil Kami
-      </Button>
+        <Image
+          src={ilus1}
+          alt="Produk Batik Blimbing"
+          class={'w-[200px] absolute top-0 left-0'}
+        />
+      </div>
     </div>
   </SectionLayout>
 </BaseLayout>
