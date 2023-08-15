@@ -1,13 +1,10 @@
 // React
-import { useState, Fragment } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 
 // Framer Motion
 import { AnimatePresence, Variants, motion } from 'framer-motion';
 
-// React If
-import { If, Then, Else } from 'react-if';
-
-// Hooks
+// useHooks
 import { useWindowSize } from 'usehooks-ts';
 
 // Components
@@ -21,19 +18,12 @@ import { BREAK_POINT } from '@/data';
 
 const navsVariant: Variants = {
   init: {
-    background: '#f8fafc',
     opacity: 0,
-    scale: 0.2,
-    borderRadius: 500,
   },
 
   open: {
-    background: '#020617',
     display: 'flex',
     opacity: 1,
-
-    scale: 1,
-    borderRadius: 0,
 
     transition: {
       duration: 0.3,
@@ -41,13 +31,9 @@ const navsVariant: Variants = {
   },
 
   close: {
-    background: '#f8fafc',
-    scale: 0,
-    borderRadius: 300,
     opacity: 0,
     transition: {
       duration: 0.3,
-      delay: 0.3,
     },
   },
 };
@@ -80,46 +66,53 @@ function Navs({ routes, currentActiveRoute }: NavsProps) {
   const [overlay, setOverlay] = useState(false);
   const { width } = useWindowSize();
 
+  useEffect(() => {
+    if (width >= BREAK_POINT) {
+      setOverlay(true);
+    } else {
+      setOverlay(false);
+    }
+  }, [width]);
+
   const NavItems = () => {
     return (
-      <Fragment>
-        {routes.map(({ id, txt, href }, index) => {
-          // Desktop Mode
-          if (width > BREAK_POINT) {
+      <div className="flex flex-col gap-8 sm:gap-6 sm:flex-row">
+        <div className="flex flex-col gap-6 items-center sm:flex-row">
+          {routes.map(({ id, txt, href }, index) => {
             return (
-              <a
+              <motion.a
                 key={id}
+                custom={index}
+                initial={width >= BREAK_POINT ? false : 'init'}
+                animate={'show'}
+                exit={'hide'}
+                variants={navItemVariant}
                 className={clsx(
-                  'text-foreground font-medium',
-                  'border-foreground',
-                  currentActiveRoute === href && 'border-b-2'
+                  'text-neutral-fg border-b-2',
+                  width <= BREAK_POINT && 'text-xl',
+                  currentActiveRoute === href
+                    ? 'border-accent'
+                    : 'border-transparent'
                 )}
                 href={href}
               >
                 {txt}
-              </a>
+              </motion.a>
             );
-          }
+          })}
+        </div>
 
-          // Mobile Mode
-          return (
-            <motion.a
-              key={id}
-              custom={index}
-              initial={'init'}
-              animate={'show'}
-              exit={'hide'}
-              variants={navItemVariant}
-              className={`text-foreground border-slate-950 ${
-                currentActiveRoute === href ? 'border-b-2' : 'text-gray-500'
-              }`}
-              href={href}
-            >
-              {txt}
-            </motion.a>
-          );
-        })}
-      </Fragment>
+        <a
+          className={buttonVariants({
+            variant: 'custom',
+            className: 'bg-primary',
+          })}
+          target="_blank"
+          href=""
+        >
+          Hubungi Kami
+        </a>
+      </div>
     );
   };
 
@@ -127,53 +120,24 @@ function Navs({ routes, currentActiveRoute }: NavsProps) {
     <div className="transition-all duration-300 basis-full grow">
       <div className="flex justify-end items-center">
         {/* Navitems */}
-        <If condition={width !== 0 && width < BREAK_POINT}>
-          {/* Mobile Mode */}
-          <Then>
-            <AnimatePresence>
-              {overlay && (
-                <motion.div
-                  layout
-                  initial={'init'}
-                  animate={'open'}
-                  exit={'close'}
-                  variants={navsVariant}
-                  className={clsx(
-                    'flex gap-5', // default
-                    'sm:static sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5 sm:bg-base-main', // Desktop mode
-                    `flex-col fixed top-0 bottom-0 left-0 right-0 justify-center items-center` // Mobile Mode
-                  )}
-                >
-                  <NavItems />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </Then>
-
-          {/* Desktop Mode */}
-          <Else>
-            <div
+        <AnimatePresence>
+          {overlay && (
+            <motion.div
+              layout
+              initial={'init'}
+              animate={'open'}
+              exit={'close'}
+              variants={navsVariant}
               className={clsx(
-                'flex gap-5', // default
-                'sm:static sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5 sm:bg-base-main', // Desktop mode
-                `flex-col fixed top-0 bottom-0 left-0 right-0 justify-center items-center bg-black bg-opacity-80` // Mobile Mode
+                'flex gap-5 bg-neutral-bg', // default
+                'sm:static sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5', // Desktop mode
+                `flex-col fixed top-0 bottom-0 left-0 right-0 justify-center items-center` // Mobile Mode
               )}
             >
               <NavItems />
-
-              <a
-                className={buttonVariants({
-                  variant: 'custom',
-                  className: 'bg-primary',
-                })}
-                target="_blank"
-                href=""
-              >
-                Hubungi Kami
-              </a>
-            </div>
-          </Else>
-        </If>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Hamburger */}
         <div
@@ -186,10 +150,7 @@ function Navs({ routes, currentActiveRoute }: NavsProps) {
         >
           <div className="tham-box">
             <div
-              className={clsx(
-                'tham-inner transition-all',
-                overlay ? 'bg-slate-50' : 'bg-slate-950'
-              )}
+              className={clsx('tham-inner transition-all bg-neutral-fg')}
             ></div>
           </div>
         </div>

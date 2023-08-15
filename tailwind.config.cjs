@@ -17,8 +17,8 @@ module.exports = {
     extend: {
       colors: {
         neutral: {
-          background: '#ffffff',
-          foreground: '#030401',
+          bg: '#ffffff', // background
+          fg: '#030401', // foreground
         },
 
         primary: '#fcf644 ',
