@@ -1,0 +1,15 @@
+---
+interface Props {
+  href: string;
+  externalClass?: string;
+}
+
+const { href, externalClass = 'bg-primary text-neutral-fg' } = Astro.props;
+---
+
+<a
+  class={`w-max font-quicksand text-sm inline-flex items-center justify-center rounded-sm transition-all duration-300 border-none outline-none px-4 py-2 drop-shadow-sm hover:drop-shadow-xl ${externalClass}`}
+  href={href}
+>
+  <slot> Nama Link</slot>
+</a>

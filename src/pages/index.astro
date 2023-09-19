@@ -5,6 +5,7 @@ import SectionLayout from '@/layouts/SectionLayout.astro';
 
 // Components
 import { Button } from '@/components/ui/button';
+import Link from '@/components/Link/Link.astro';
 
 // Lib
 import { Image } from '@astrojs/image/components';
@@ -31,41 +32,35 @@ const currentRoute = Astro.url.pathname;
 
 <BaseLayout title="Beranda" currentRoute={currentRoute}>
   <SectionLayout>
-    <div class="w-full grid grid-cols-2 grid-rows-1">
-      <div class="flex flex-col gap-6">
-        <h2 class="max-w-2xl font-aleo font-bold text-5xl">
-          Eksplorasi Kreativitas dengan Motif Batik Blimbing
-        </h2>
+    <div
+      class="w-full grid grid-cols-2 grid-rows-1 items-center justify-center"
+    >
+      <div class="flex flex-col gap-6 w-full">
+        <p>Home Industry Kain Batik</p>
 
-        <p class="font-quicksand text-xl max-w-3xl">
-          Temukan inspirasi tak terbatas dengan Batik Blimbing. Biarkan
-          kreativitas Anda berkembang dalam memilih motif yang paling mewakili
-          diri Anda. Jadikan Batik Blimbing sebagai bagian dari gaya unik Anda.
+        <h1 class="font-aleo text-4xl">Sentuhan Kreativitas Batik Blimbing</h1>
+
+        <p class="text-xl max-w-3xl">
+          Keindahan Seni Batik Tradisional dengan Sentuhan Modern.
         </p>
 
-        <Button
-          client:only
-          variant="custom"
-          className="font-quicksand relative z-0 bg-primary text-foreground px-6 drop-shadow-sm hover:drop-shadow-2xl duration-300 transition-all outline-none border-none"
-        >
-          Lihat Profil Kami
-        </Button>
+        <Link href="/">Lihat Profil Kami</Link>
       </div>
 
-      <div class="relative justify-self-end">
-        <Image src={ilus2} alt="Produk Batik Blimbing" class={'w-[400px]'} />
+      <div class="flex justify-end relative bg-red-500 w-full h-full">
+        <!-- <Image src={ilus2} alt="Produk Batik Blimbing" class={'w-[400px]'} /> -->
 
-        <Image
+        <!-- <Image
           src={ilus3}
           alt="Produk Batik Blimbing"
           class={'w-[400px] absolute top-0 left-0'}
-        />
+        /> -->
 
-        <Image
+        <!-- <Image
           src={ilus1}
           alt="Produk Batik Blimbing"
           class={'w-[200px] absolute top-0 left-0'}
-        />
+        /> -->
       </div>
     </div>
   </SectionLayout>
